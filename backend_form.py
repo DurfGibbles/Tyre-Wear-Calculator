@@ -1,5 +1,5 @@
 # Import required libraries: Flask for web app, pymysql for MySQL database
-from flask import Flask
+from flask import Flask, request
 import pymysql
 
 # Initialize Flask application
@@ -12,6 +12,10 @@ DB_CONFIG = {
     'password': '',  
     'database': 'tyre_wear_calculator',  
 }
+
+# Connect to MySQL database to store form data
+conn = pymysql.connect(**DB_CONFIG)
+cursor = conn.cursor()
 
 # Route for the main page, handling both GET (display form) and POST (process form)
 @app.route('/', methods=['GET', 'POST'])
@@ -26,22 +30,67 @@ def index():
         traction = request.form['traction']
         downforce = request.form['downforce']
         braking_force = request.form['braking_force']
+        tyre_name = request.form['tyre_name']
+
+        cursor.execute('SELECT base_wear FROM tyre WHERE tyre_name = %s', (tyre_name))
+        result = cursor.fetchone()
+        tyre_wear = result['base_wear'] if result else "Unknown"
 
         # Placeholder for tyre wear calculation (to be replaced with actual logic)
-        tyre_wear = "Moderate"
-
-        # Connect to MySQL database to store form data
-        conn = pymysql.connect(**DB_CONFIG)
-        cursor = conn.cursor()
+        if tyre_wear == 'C1':
+            print("The selected tyre is the C1 compound")
+            final_wear = tyre_wear * lap_distance
+            final_wear = tyre_wear * abrasiveness
+            final_wear = tyre_wear * evolution
+            final_wear = tyre_wear * traction
+            final_wear = tyre_wear * downforce
+            final_wear = tyre_wear * braking_force
+            print(final_wear)
+        elif tyre_wear == 'C2':
+            print("The selected tyre is the C2 compound")
+            final_wear = tyre_wear * lap_distance
+            final_wear = tyre_wear * abrasiveness
+            final_wear = tyre_wear * evolution
+            final_wear = tyre_wear * traction
+            final_wear = tyre_wear * downforce
+            final_wear = tyre_wear * braking_force
+            print(final_wear)
+        elif tyre_wear == 'C3':
+            print("The selected tyre is the C3 compound")
+            final_wear = tyre_wear * lap_distance
+            final_wear = tyre_wear * abrasiveness
+            final_wear = tyre_wear * evolution
+            final_wear = tyre_wear * traction
+            final_wear = tyre_wear * downforce
+            final_wear = tyre_wear * braking_force
+            print(final_wear)
+        elif tyre_wear == 'C4':
+            print("The selected tyre is the C4 compound")
+            final_wear = tyre_wear * lap_distance
+            final_wear = tyre_wear * abrasiveness
+            final_wear = tyre_wear * evolution
+            final_wear = tyre_wear * traction
+            final_wear = tyre_wear * downforce
+            final_wear = tyre_wear * braking_force
+            print(final_wear)
+        elif tyre_wear == 'C5':
+            print("The selected tyre is the C5 compound")
+            final_wear = tyre_wear * lap_distance
+            final_wear = tyre_wear * abrasiveness
+            final_wear = tyre_wear * evolution
+            final_wear = tyre_wear * traction
+            final_wear = tyre_wear * downforce
+            final_wear = tyre_wear * braking_force
+            print(final_wear)
 
         # Insert car data into car table and get the auto-generated ID
-        cursor.execute('INSERT INTO car (car_name, traction_rating, downforce_rating, braking_rating) VALUES (%s, %s, %s, %s)', (car_name, traction, downforce, braking))
+        cursor.execute('INSERT INTO car (car_name, traction_rating, downforce_rating, braking_rating) VALUES (%s, %s, %s, %s)', (car_name, traction, downforce, braking_force))
         
         # Insert track data into track table and get the auto-generated ID
-        cursor.execute('INSERT INTO track (track_name, lap_distance, abrasiveness_rating, evolution_rating) VALUES (%s, %s, %s, %s)', (track_name, distance, abrasiveness, evolution))
+        cursor.execute('INSERT INTO track (track_name, lap_distance, abrasiveness_rating, evolution_rating) VALUES (%s, %s, %s, %s)', (track_name, lap_distance, abrasiveness, evolution))
         
-        # Insert tyre wear result into results table, linking to car and track IDs
-        cursor.execute('INSERT INTO results (tyre_wear, car_id, track_id) VALUES (%s, %s, %s)', (tyre_wear, car_id, track_id))
+        # Insert tyre wear result into results table
+        cursor.execute('INSERT INTO results (tyre_wear) VALUES (%s)', (tyre_wear))
         
         # Save changes to database
         conn.commit()
