@@ -32,11 +32,12 @@ def index():
         braking_force = request.form['braking_force']
         tyre_name = request.form['tyre_name']
 
+        # Retrieve the base tyre wear from the database
         cursor.execute('SELECT base_wear FROM tyre WHERE tyre_name = %s', (tyre_name))
         result = cursor.fetchone()
         tyre_wear = result['base_wear'] if result else "Unknown"
 
-        # Still to be done
+        # Still to be done - calculations for tyre wear
         if tyre_wear == 'C1':
             print("The selected tyre is the C1 compound")
             final_wear = tyre_wear * lap_distance * abrasiveness * evolution * traction * downforce * braking_force
