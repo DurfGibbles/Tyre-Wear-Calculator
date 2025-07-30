@@ -36,51 +36,26 @@ def index():
         result = cursor.fetchone()
         tyre_wear = result['base_wear'] if result else "Unknown"
 
-        # Placeholder for tyre wear calculation (to be replaced with actual logic)
+        # Still to be done
         if tyre_wear == 'C1':
             print("The selected tyre is the C1 compound")
-            final_wear = tyre_wear * lap_distance
-            final_wear = tyre_wear * abrasiveness
-            final_wear = tyre_wear * evolution
-            final_wear = tyre_wear * traction
-            final_wear = tyre_wear * downforce
-            final_wear = tyre_wear * braking_force
+            final_wear = tyre_wear * lap_distance * abrasiveness * evolution * traction * downforce * braking_force
             print(final_wear)
         elif tyre_wear == 'C2':
             print("The selected tyre is the C2 compound")
-            final_wear = tyre_wear * lap_distance
-            final_wear = tyre_wear * abrasiveness
-            final_wear = tyre_wear * evolution
-            final_wear = tyre_wear * traction
-            final_wear = tyre_wear * downforce
-            final_wear = tyre_wear * braking_force
+            final_wear = tyre_wear * lap_distance * abrasiveness * evolution * traction * downforce * braking_force
             print(final_wear)
         elif tyre_wear == 'C3':
             print("The selected tyre is the C3 compound")
-            final_wear = tyre_wear * lap_distance
-            final_wear = tyre_wear * abrasiveness
-            final_wear = tyre_wear * evolution
-            final_wear = tyre_wear * traction
-            final_wear = tyre_wear * downforce
-            final_wear = tyre_wear * braking_force
+            final_wear = tyre_wear * lap_distance * abrasiveness * evolution * traction * downforce * braking_force
             print(final_wear)
         elif tyre_wear == 'C4':
             print("The selected tyre is the C4 compound")
-            final_wear = tyre_wear * lap_distance
-            final_wear = tyre_wear * abrasiveness
-            final_wear = tyre_wear * evolution
-            final_wear = tyre_wear * traction
-            final_wear = tyre_wear * downforce
-            final_wear = tyre_wear * braking_force
+            final_wear = tyre_wear * lap_distance * abrasiveness * evolution * traction * downforce * braking_force
             print(final_wear)
         elif tyre_wear == 'C5':
             print("The selected tyre is the C5 compound")
-            final_wear = tyre_wear * lap_distance
-            final_wear = tyre_wear * abrasiveness
-            final_wear = tyre_wear * evolution
-            final_wear = tyre_wear * traction
-            final_wear = tyre_wear * downforce
-            final_wear = tyre_wear * braking_force
+            final_wear = tyre_wear * lap_distance * abrasiveness * evolution * traction * downforce * braking_force
             print(final_wear)
 
         # Insert car data into car table and get the auto-generated ID
@@ -89,8 +64,8 @@ def index():
         # Insert track data into track table and get the auto-generated ID
         cursor.execute('INSERT INTO track (track_name, lap_distance, abrasiveness_rating, evolution_rating) VALUES (%s, %s, %s, %s)', (track_name, lap_distance, abrasiveness, evolution))
         
-        # Insert tyre wear result into results table
-        cursor.execute('INSERT INTO results (tyre_wear) VALUES (%s)', (tyre_wear))
+        # Insert tyre wear result into tyre wear table
+        cursor.execute('INSERT INTO tyre_wear (final_wear) VALUES (%s)', (final_wear))
         
         # Save changes to database
         conn.commit()
