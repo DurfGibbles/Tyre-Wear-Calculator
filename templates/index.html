@@ -6,7 +6,7 @@
 
     <body>
         <div>
-            <h2>Tyre Wear Estimator</h2>
+            <h2>Tyre Wear Calculator</h2>
 
             <div id = "error" class = "error">Please fill all fields.</div>
 
@@ -84,6 +84,15 @@
                 <button type = "submit" id = "submit">Submit</button>
 
             </form>
+
+            <!-- Display the result if available -->
+            {% if result %}
+                <div>
+                    <h3>Result</h3>
+                    <p>{{ result }}</p>
+                </div>
+            {% endif %}
+
         </div>
     </body>
 </html>
