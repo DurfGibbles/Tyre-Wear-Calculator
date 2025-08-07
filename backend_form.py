@@ -78,7 +78,7 @@ def index():
         # Save changes to database
         conn.commit()
 
-        return render_template('index.html', result=f"Calculated tyre wear for {tyre_name}: {final_wear}")
+        return render_template('results.html', result=f"Calculated tyre wear for {tyre_name}: {final_wear}")
 
         # Close cursor and connection
         cursor.close()

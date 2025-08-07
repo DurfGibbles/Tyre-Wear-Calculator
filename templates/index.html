@@ -2,87 +2,118 @@
 <html lang="en">
     <head>
         <title>Tyre Wear Calculator</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            div {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            h2 {
+                text-align: center;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            label {
+                margin-top: 10px;
+                font-weight: bold;
+            }
+            input, select, button {
+                margin-top: 5px;
+                padding: 8px;
+                font-size: 16px;
+            }
+            button {
+                margin-top: 20px;
+                padding: 10px;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
     </head>
 
     <body>
         <div>
             <h2>Tyre Wear Calculator</h2>
 
-            <div id = "error" class = "error">Please fill all fields.</div>
+            <div id="error" class="error">Please fill all fields.</div>
 
-            <form action = "/" method = "post">
+            <form action="/" method="post">
                 <label>Track Name</label>
-                <input type = "text" id = "track_name" name = "track_name" required>
+                <input type="text" id="track_name" name="track_name" required>
 
                 <label>Lap Distance (km)</label>
-                <input type = "text" id = "lap_distance" name = "lap_distance" required>
+                <input type="text" id="lap_distance" name="lap_distance" required>
                 
                 <label>Abrasiveness</label>
-                <select id = "abrasiveness" name = "abrasiveness" required>
-                    <option value = "">Select...</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
+                <select id="abrasiveness" name="abrasiveness" required>
+                    <option value="">Select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
 
                 <label>Evolution</label>
-                <select id = "evolution" name = "evolution" required>
-                    <option value = "">Select...</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
+                <select id="evolution" name="evolution" required>
+                    <option value="">Select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>     
                 
-                <label>Car name</label>
-                <input type = "text" id = "car_name" name = "car_name" required>
+                <label>Car Name</label>
+                <input type="text" id="car_name" name="car_name" required>
 
                 <label>Traction</label>
-                <select id = "traction" name = "traction" required>
-                    <option value = "">Select...</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
+                <select id="traction" name="traction" required>
+                    <option value="">Select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
 
                 <label>Downforce</label>
-                <select id = "downforce" name = "downforce" required>
-                    <option value = "">Select...</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
+                <select id="downforce" name="downforce" required>
+                    <option value="">Select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
 
-                <label>Braking force</label>
-                <select id = "braking_force" name = "braking_force" required>
-                    <option value = "">Select...</option>
-                    <option value = "1">1</option>
-                    <option value = "2">2</option>
-                    <option value = "3">3</option>
-                    <option value = "4">4</option>
-                    <option value = "5">5</option>
+                <label>Braking Force</label>
+                <select id="braking_force" name="braking_force" required>
+                    <option value="">Select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
 
                 <label>Tyre Compound</label>
                 <select id="tyre_name" name="tyre_name" required>
-                <option value="">Select...</option>
-                <option value="C1">C1</option>
-                <option value="C2">C2</option>
-                <option value="C3">C3</option>
-                <option value="C4">C4</option>
-                <option value="C5">C5</option>
+                    <option value="">Select...</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                    <option value="C3">C3</option>
+                    <option value="C4">C4</option>
+                    <option value="C5">C5</option>
                 </select>
 
                 <label>Submit</label>
-                <button type = "submit" id = "submit">Submit</button>
-
+                <button type="submit" id="submit">Submit</button>
             </form>
         </div>
     </body>
