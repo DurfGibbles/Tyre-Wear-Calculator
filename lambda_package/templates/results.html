@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tyre Wear Calculation Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        div {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            display: none;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, button {
+            margin-top: 5px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Tyre Wear Calculation Results</h1>
+        
+        {% if result %}
+            <p>{{ result }}</p>
+        {% else %}
+            <p>No results available.</p>
+        {% endif %}
+        
+        <a href="/">Back to Calculator</a>
+    </div>
+</body>
+</html>
